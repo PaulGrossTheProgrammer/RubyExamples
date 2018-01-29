@@ -35,7 +35,7 @@ class Tutorial < Gosu::Window
     end
 
     if button_down? Gosu::MsLeft
-      puts "clicked"
+      puts "Old clicked code..."
 
       @birds.each do |currBird|
         currBird.isClicked
@@ -53,6 +53,13 @@ class Tutorial < Gosu::Window
 
     # Draw the mouse cursor
     @mouse_cursor.draw(mouse_x - 5, mouse_y - 5, 1)
+  end
+
+  def button_down(buttonId)
+    case buttonId
+    when Gosu::MsLeft
+      puts 'Mouse clicked'
+    end
   end
 end
 
