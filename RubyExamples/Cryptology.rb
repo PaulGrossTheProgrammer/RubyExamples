@@ -1,31 +1,29 @@
 puts 'Cryptology tests...'
 
-plaintextAlphabet = Array('A' .. 'Z')
+plaintext_alphabet = Array('A'..'Z')
 
 puts "Plaintext alphabet:"
-print plaintextAlphabet
-puts "\r"
+print plaintext_alphabet ; puts ; puts
 
-encryptionAlphabet = Array('A' .. 'Z')
+encryption_alphabet = Array('A'..'Z')
 
 # Modify the encryption alphabet
 
 =begin
 # Move a letter to the end by name
-deletedLetter = encryptionAlphabet.delete("A")
-encryptionAlphabet << deletedLetter
+deletedLetter = encryption_alphabet.delete("A")
+encryption_alphabet << deletedLetter
 
 # Move a letter to the end by position
-deletedLetter = encryptionAlphabet.delete_at(0)
-encryptionAlphabet << deletedLetter
+deletedLetter = encryption_alphabet.delete_at(0)
+encryption_alphabet << deletedLetter
 
 # Shift the first letter to the end
-deletedLetter = encryptionAlphabet.shift
-encryptionAlphabet << deletedLetter
+deletedLetter = encryption_alphabet.shift
+encryption_alphabet << deletedLetter
 
 puts "Encryption alphabet:"
-print encryptionAlphabet
-puts "\r"
+print encryption_alphabet ; puts ; puts
 =end
 
 # Convert keyphrase to unique array of uppercase letters
@@ -36,33 +34,49 @@ keyphrase = keyphrase.upcase
 puts keyphrase
 
 # Extract each letter and put it in an array
-keyphraseArray = Array.new # Start with an empty array
+keyphrase_array = Array.new # Start with an empty array
 keyphrase.each_char do |currLetter|
-  if plaintextAlphabet.find_index(currLetter) and keyphraseArray.find_index(currLetter) == nil
-#    puts 'Letter: ' + currLetter
-#    puts keyphraseArray.find_index(currLetter) == nil
-    
-    keyphraseArray << currLetter
-  end 
+  if plaintext_alphabet.find_index(currLetter) and keyphrase_array.find_index(currLetter) == nil
+    keyphrase_array << currLetter
+  end
 end
 
 puts "Keyphrase array:"
-print keyphraseArray
-puts "\r"
+print keyphrase_array ; puts
 
 # Remove the letters in the keyphrase from the encryptionAlphabet
-keyphraseArray.each do |currLetter|
-  encryptionAlphabet.delete(currLetter)
+keyphrase_array.each do |currLetter|
+  encryption_alphabet.delete(currLetter)
 end
 
 puts "Encryption alphabet:"
-print encryptionAlphabet
+print encryption_alphabet
 puts "\r"
 
-# Stick the keyphrase on the front of the encryptionAlphabet
-encryptionAlphabet = keyphraseArray << encryptionAlphabet
+# Stick the keyphrase on the front of the encryption_alphabet
+encryption_alphabet = keyphrase_array << encryption_alphabet
+encryption_alphabet.flatten!
 
 puts "Encryption alphabet:"
-print encryptionAlphabet
-puts "\r"
+print encryption_alphabet ; puts ; puts
+
+plaintext = "Amelie Tabor"
+plaintext = plaintext.upcase
+
+cyphertext = ""
+plaintext.each_char do |current_character|
+  #  puts current_character
+  # Lookup letter in plaintext to get index
+  index = plaintext_alphabet.index(current_character)
+  if index != nil
+    #    puts "Plaintext index " << index.to_s
+    cypher_character = encryption_alphabet[index]
+    #    puts "Cypher: " <<  cypher_character.to_s
+    cyphertext << cypher_character
+  else
+    cyphertext << " "
+  end
+end
+
+puts cyphertext
 

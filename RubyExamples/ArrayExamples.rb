@@ -51,6 +51,13 @@ array_test = Array('A'..'F')
 print array_test ; puts
 puts
 
+# Testing searching for an element by value
+puts "Testing find..."
+array_test = Array('A'..'F')
+index_found = array_test.index("C")
+puts "Found C at index " << index_found.to_s
+puts
+
 # Add a new element to the end
 puts "Testing adding an element..."
 array_test = Array(1..5)
