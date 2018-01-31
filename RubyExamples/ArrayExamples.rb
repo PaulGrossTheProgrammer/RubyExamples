@@ -20,10 +20,12 @@ puts
 puts "Testing accessing one element..."
 array_test = [1, 2, 3]
 print array_test ; puts
+
 # Note that the index is zero-based, so index 0 is the first element
 puts "The element at index 0 = #{array_test[0]}"
 puts "The element at index 1 = #{array_test[1]}"
-puts "The element at index 2 = #{array_test[2]}"
+# array_test.index(x) is an alternmative to array_test[x]
+puts "The element at index 2 = #{array_test.index(2)}"
 
 puts "The index of the last element = #{array_test.length() -1}"
 puts "The last element = #{array_test[array_test.length() -1]}"
