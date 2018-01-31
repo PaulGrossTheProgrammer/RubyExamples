@@ -1,3 +1,5 @@
+# Examples of useful array operations
+
 # Create a new array - empty
 puts "Testing creating an empty array..."
 array_test = Array.new
