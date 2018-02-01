@@ -5,7 +5,7 @@ puts "Testing creating an empty array..."
 array_test = Array.new
 
 print array_test ; puts
-puts "The array as this many elements: " + array_test.length.to_s ; puts
+puts "The array as this many elements: #{array_test.length}"; puts
 
 # Create an array with elements
 puts "Testing creating with elements..."
@@ -44,7 +44,7 @@ puts
 puts "Testing elements that are nil..."
 array_test = Array.new(3)
 print array_test ; puts
-puts "The array as this may elements: " + array_test.length.to_s ; puts
+puts "The array as this many elements: #{array_test.length}"; puts
 
 # Create an array with a range of numbers or letters
 puts "Testing ranges..."
@@ -59,7 +59,7 @@ puts
 puts "Testing find..."
 array_test = Array('A'..'F')
 index_found = array_test.index("C")
-puts "Found C at index " << index_found.to_s
+puts "Found C at index #{index_found}"
 puts
 
 # Add a new element to the end
@@ -73,21 +73,23 @@ puts
 array_test = Array(1..5)
 print array_test ; puts
 deleted_element = array_test.shift
-puts "The element removed was " + deleted_element.to_s
+puts "The element removed was #{deleted_element}"
 print array_test ; puts
 puts
 
 # Remove elements from the middle of an array by name
 array_test = Array(1..5)
 deleted_element = array_test.delete(4)
-puts "The element removed was " + deleted_element.to_s
+puts "The element removed was #{deleted_element}"
 print array_test ; puts
 puts
 
 # Remove elements from the middle of an array by index
 array_test = Array(1..5)
 deleted_element = array_test.delete_at(1) # Note that the index is zero-based, so this deletes the second element
-puts "The element removed was " + deleted_element.to_s
+puts "The element removed was #{deleted_element}"
 print array_test ; puts
 puts
+
+#TODO Rotate the elements using shift and concatenate
 
