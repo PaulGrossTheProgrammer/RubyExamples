@@ -41,41 +41,32 @@ keyphrase.each_char do |currLetter|
   end
 end
 
-puts "Keyphrase array:"
-print keyphrase_array ; puts
-
-# Remove the letters in the keyphrase from the encryptionAlphabet
-keyphrase_array.each do |currLetter|
-  encryption_alphabet.delete(currLetter)
+# Move the keyphrase letters to the start of the encryption alphabet
+keyphrase_array.reverse.each do |current_letter|
+  encryption_alphabet.delete(current_letter)
+  encryption_alphabet.insert(0, current_letter)
 end
-
-puts "Encryption alphabet:"
-print encryption_alphabet
-puts "\r"
-
-# Stick the keyphrase on the front of the encryption_alphabet
-encryption_alphabet = keyphrase_array << encryption_alphabet
-encryption_alphabet.flatten!
 
 puts "Encryption alphabet:"
 print encryption_alphabet ; puts ; puts
 
 plaintext = "Amelie Tabor"
+#puts "Please enter plaintext:"
+#plaintext = gets
+puts plaintext
 plaintext = plaintext.upcase
 
 cyphertext = ""
-plaintext.each_char do |current_character|
-  #  puts current_character
-  # Lookup letter in plaintext to get index
-  index = plaintext_alphabet.index(current_character)
-  if index != nil
-    #    puts "Plaintext index " << index.to_s
-    cypher_character = encryption_alphabet[index]
-    #    puts "Cypher: " <<  cypher_character.to_s
-    cyphertext << cypher_character
-  else
-    cyphertext << " "
+
+plaintext.split.each do |current_word| # split plaintext into words
+  current_word.each_char do |current_character|
+    index = plaintext_alphabet.index(current_character) # Lookup letter in plaintext to get index
+    if index != nil
+      cypher_character = encryption_alphabet[index] # Lookup index in the encryption alphabet
+      cyphertext << cypher_character
+    end
   end
+  cyphertext << " "
 end
 
 puts cyphertext
