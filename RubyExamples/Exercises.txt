@@ -1,0 +1,26 @@
+Excercises
+
+Introduction to Arrays
+
+Go over the Array Examples code - enough to do these exercises.
+
+The following examples need a contrivance to make the exercise interesting:
+
+Exercise 1.
+
+Start with this code:
+
+magic_zoo = ["cow", "chicken", "snake", "dragon"]
+puts "The original zoo:"
+print magic_zoo; puts; puts;
+
+
+a: Move the chicken to the begining
+
+b: Swap the first and last animals
+
+c: Make a copy of the second animal and put it at the end
+
+d: Make a new zoo containing everything in the first zoo
+
+e: Make a new zoo containing everything in the first zoo in reverse order

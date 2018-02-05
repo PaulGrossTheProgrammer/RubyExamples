@@ -8,7 +8,7 @@ class Tutorial < Gosu::Window
     @mouse_cursor = Gosu::Image.new "image/Cursor Icon 1.png"
 
     @birds = Array.new
-    10.times do
+    3.times do
       @birds << Bird.new
     end
   end
@@ -33,15 +33,6 @@ class Tutorial < Gosu::Window
     if button_down? Gosu::Button:: KbUp
       @birds[0].move_up
     end
-
-    if button_down? Gosu::MsLeft
-      puts "Old clicked code..."
-
-      @birds.each do |currBird|
-        currBird.isClicked
-      end
-
-    end
   end
 
   def draw
@@ -57,8 +48,25 @@ class Tutorial < Gosu::Window
 
   def button_down(buttonId)
     case buttonId
+    when Gosu::KbEscape
+      puts "Pressed escape - game over!"
+      close
     when Gosu::MsLeft
-      puts 'Mouse clicked'
+      puts 'Mouse clicked - lts see if we hit a bird'
+      bird_clicked = nil
+      @birds.each do |currBird|
+        if currBird.isClicked(mouse_x, mouse_y) != nil
+          bird_clicked = currBird
+        end
+      end
+
+      if bird_clicked != nil
+        puts "We clicked on a bird!"
+        @birds.delete bird_clicked
+      else
+        @birds << Bird.new
+      end
+
     end
   end
 end
@@ -72,9 +80,13 @@ class Bird
     @yMovement = +1
   end
 
-  def isClicked
-    puts "TODO..."
-
+  def isClicked mouse_x, mouse_y
+    puts "The mouse is at #{mouse_x}, #{mouse_y}"
+    if mouse_x >= @xPosition && mouse_x <= @xPosition + 124 && mouse_y >= @yPosition && mouse_y <= @yPosition + 124
+      puts "is clicked"
+      return true
+    end
+    false
   end
 
   def move_left

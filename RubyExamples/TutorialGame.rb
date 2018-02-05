@@ -10,6 +10,8 @@ class Tutorial < Gosu::Window
 
   def update
     # Update the game
+    
+
   end
 
   def draw
@@ -30,6 +32,8 @@ class Tutorial < Gosu::Window
       puts 'Mouse Right clicked'
     end
   end
+  
+
 
 end
 
