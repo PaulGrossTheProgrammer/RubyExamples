@@ -20,15 +20,14 @@ end
 
 # Builds a new cipher alphabet using the keyphrase
 def build_keyphrase_cipher_alphabet(plaintext_alphabet, keyphrase) 
-  puts "Building keyphrase cipher alphabet..."
-
   # Copy the plaintext alphabet to a new cipher alphabet
   cipher_alphabet = Array.new
   plaintext_alphabet.each do |current_letter|
     cipher_alphabet << current_letter
   end
   
-  keyphrase_array = Array.new # Start with an empty array
+  keyphrase_array = Array.new 
+  # Determine the unique letters in the keyphrase
   keyphrase.upcase.each_char do |currLetter|
     if plaintext_alphabet.find_index(currLetter) and keyphrase_array.find_index(currLetter) == nil
       keyphrase_array << currLetter
@@ -44,6 +43,7 @@ def build_keyphrase_cipher_alphabet(plaintext_alphabet, keyphrase)
   cipher_alphabet
 end
 
+# Encrypt the plaintext by mapping the plaintext alphabet to the cipher alphabet 
 def encrypt(plaintext_alphabet, cipher_alphabet, plaintext)
   ciphertext = ""
 
@@ -60,12 +60,18 @@ def encrypt(plaintext_alphabet, cipher_alphabet, plaintext)
   ciphertext
 end
 
+# Dencrypt the ciphertext by reverse-mapping the plaintext alphabet to the cipher alphabet
+def decrypt(plaintext_alphabet, cipher_alphabet, ciphertext)
+  encrypt(cipher_alphabet, plaintext_alphabet, ciphertext)
+end
 
+
+=begin
 plaintext = "Amleie Tabor"
 
 plaintext_alphabet = Array('A'..'Z')
 
-# Use a Caesar shift alphabet
+# Use a Caesar shift alphabet with a shift of 6
 shift6_cipher_alphabet = build_shiftcipher_alphabet(plaintext_alphabet, 6)
 print shift6_cipher_alphabet; puts; puts
 
@@ -88,3 +94,4 @@ puts ciphertext
 decoded_text = encrypt(keyphrase1_cipher_alphabet, plaintext_alphabet, ciphertext)
 puts decoded_text
 
+=end
